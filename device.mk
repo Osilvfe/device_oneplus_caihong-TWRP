@@ -116,7 +116,7 @@ SOONG_CONFIG_ufsbsg_ufsframework := bsg
 
 # OEM otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(DEVICE_PATH)/security/otacert
+    $(DEVICE_PATH)/recovery/root/system/etc/security/otacert
 
 
 # System AVB

@@ -26,7 +26,7 @@ BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_KERNEL_IMAGE_NAME := kernel
 BOARD_RAMDISK_USE_LZ4 := true
-TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
 
 # Partition Info
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -88,7 +88,7 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     vendor.display.config@1.0 \
     vendor.display.config@2.0 \
     libdebuggerd_client
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
@@ -109,8 +109,8 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Extras
-TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
-TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/recovery/root/system/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/recovery/root/vendor/vendor.prop
 
 # TWRP specific build flags
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -169,3 +169,18 @@ ifneq ($(wildcard bootable/recovery/installer/.),)
 endif
 # end local build flags
 #
+
+#Other
+TARGET_OTA_ASSERT_DEVICE := caihong
+
+# TWRP specific build flags
+TW_FRAMERATE := 144
+
+# Vibrator
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS_FIX_OFF := true
+
+TARGET_RECOVERY_DEVICE_MODULES += libexpat android.hardware.vibrator-V2-ndk
+RECOVERY_LIBRARY_SOURCE_FILES += \
+     $(TARGET_OUT_SHARED_LIBRARIES)/libexpat.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V2-ndk.so
