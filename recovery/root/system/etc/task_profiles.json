@@ -84,6 +84,11 @@
       "File": "cpu.uclamp.latency_sensitive"
     },
     {
+      "Name": "Shares",
+      "Controller": "cpu",
+      "File": "cpu.shares"
+    },
+    {
       "Name": "FreezerState",
       "Controller": "freezer",
       "File": "cgroup.freeze"
@@ -222,6 +227,146 @@
           {
             "Controller": "cpu",
             "Path": "camera-daemon"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlMem",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "mem"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlMultimedia",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "multimedia"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlCamera",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "camera"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlDisplay",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "display"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlSstop",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "sstop"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlSsfg",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "ssfg"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlLog",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "log"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlShares1024",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "Shares",
+            "Value": "1024"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlShare2048",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "Shares",
+            "Value": "2048"
+          }
+        }
+      ]
+    },
+
+    {
+      "Name": "CpuctlShares512",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "Shares",
+            "Value": "512"
           }
         }
       ]
@@ -861,7 +1006,32 @@
         }
       ]
     },
-
+    {
+      "Name": "CpuSetCameraBackground",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "CpuctlCameraBackground",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "camera-background"
+          }
+        }
+      ]
+    },
     {
       "Name": "PerfBoost",
       "Actions": [
@@ -977,6 +1147,46 @@
       "Profiles": [ "HighPerformance", "HighIoPriority", "TimerSlackNormal" ]
     },
     {
+      "Name": "SCHED_SP_MEM",
+      "Profiles": [ "CpuctlMem" ]
+    },
+    {
+      "Name": "SCHED_SP_MULTIMEDIA",
+      "Profiles": [ "CpuctlMultimedia" ]
+    },
+    {
+      "Name": "SCHED_SP_CAMERA",
+      "Profiles": [ "CpuctlCamera" ]
+    },
+    {
+      "Name": "SCHED_SP_DISPLAY",
+      "Profiles": [ "CpuctlDisplay" ]
+    },
+    {
+      "Name": "SCHED_SP_SSTOP",
+      "Profiles": [ "CpuctlSstop", "MaxIoPriority", "TimerSlackNormal" ]
+    },
+    {
+      "Name": "SCHED_SP_SSFG",
+      "Profiles": [ "CpuctlSsfg", "HighIoPriority", "TimerSlackNormal" ]
+    },
+    {
+      "Name": "SCHED_SP_LOG",
+      "Profiles": [ "CpuctlLog" ]
+    },
+    {
+      "Name": "SCHED_SP_CPU_SHARES_1024",
+      "Profiles": [ "CpuctlShares1024" ]
+    },
+    {
+      "Name": "SCHED_SP_CPU_SHARES_2048",
+      "Profiles": [ "CpuctlShare2048" ]
+    },
+    {
+      "Name": "SCHED_SP_CPU_SHARES_512",
+      "Profiles": [ "CpuctlShares512" ]
+    },
+    {
       "Name": "CPUSET_SP_DEFAULT",
       "Profiles": [ "TimerSlackNormal" ]
     },
@@ -1023,6 +1233,10 @@
     {
       "Name": "CPUSET_SP_HBACKGROUND",
       "Profiles": [ "CpuSetHBackground", "BlkIoHBackground"]
+    },
+    {
+      "Name": "CPUSET_SP_CAMERA_BACKGROUND",
+      "Profiles": [ "CpuSetCameraBackground", "CpuctlCameraBackground", "LowIoPriority", "TimerSlackHigh" ]
     }
   ]
 }

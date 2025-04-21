@@ -1,9 +1,4 @@
 
-DEVICE_PATH := device/oneplus/caihong
-
-# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
@@ -17,7 +12,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Inherit from munch device
-$(call inherit-product, $(DEVICE_PATH)/device.mk)
+$(call inherit-product, device/oneplus/caihong/device.mk)
 
 # Inherit some common twrp stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
@@ -26,6 +21,5 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := caihong
 PRODUCT_NAME := twrp_caihong
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := OPD2404
+PRODUCT_MODEL := OPD2403
 PRODUCT_MANUFACTURER := OnePlus
-PRODUCT_PLATFORM := pineapple
