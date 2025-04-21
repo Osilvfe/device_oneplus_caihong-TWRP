@@ -21,5 +21,5 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 PRODUCT_DEVICE := caihong
 PRODUCT_NAME := twrp_caihong
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := OPD2403
+PRODUCT_MODEL := OPD2404
 PRODUCT_MANUFACTURER := OnePlus

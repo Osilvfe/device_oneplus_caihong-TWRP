@@ -25,6 +25,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 # Encryption
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 BOARD_USES_METADATA_PARTITION := true
+TARGET_PROVIDES_KEYMASTER := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 4
@@ -50,7 +52,9 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-TW_DEVICE_VERSION := -hraj9258
+TW_DEFAULT_LANGUAGE := zh_CN
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone45/temp"
+TW_BRIGHTNESS_PATH := "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_TWRPAPP := true
 TW_EXTRA_LANGUAGES := true
@@ -61,7 +65,7 @@ TW_INCLUDE_RESETPROP := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 TW_FRAMERATE := 144
 
-TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko"
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko  gpr_dlkm.ko  q6_notifier_dlkm.ko  q6_pdr_dlkm.ko  snd_event_dlkm.ko  spf_core_dlkm.ko"
 
 # TWRP Debug Flags
 TWRP_EVENT_LOGGING := true
