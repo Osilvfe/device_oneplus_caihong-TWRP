@@ -1,20 +1,14 @@
-service health-default /system/bin/android.hardware.health-service.qti
+service vendor.health-default /vendor/bin/hw/android.hardware.health-service.qti
     class hal
-    user root
-    group root
+    user system
+    group system
     capabilities WAKE_ALARM BLOCK_SUSPEND
     file /dev/kmsg w
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin:/odm/lib64:/odm/lib
-    disabled
-    seclabel u:r:recovery:s0
 
-service charger /system/bin/android.hardware.health-service.qti --charger
+service vendor.charger /vendor/bin/hw/android.hardware.health-service.qti --charger
     class charger
     seclabel u:r:charger_vendor:s0
-    user root
-    group root wakelock input graphics
+    user system
+    group system wakelock input graphics
     capabilities SYS_BOOT WAKE_ALARM BLOCK_SUSPEND
     file /dev/kmsg w
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin:/odm/lib64:/odm/lib
-    disabled
-    seclabel u:r:recovery:s0

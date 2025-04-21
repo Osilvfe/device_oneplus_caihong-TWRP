@@ -222,7 +222,13 @@ subsystem mem_buf_vm
 /dev/jpeg2                0660   system     camera
 /dev/jpeg3                0660   system     camera
 /dev/adsprpc-smd          0664   system     system
+/dev/fastrpc-adsp         0664   system     system
+/dev/fastrpc-cdsp         0664   system     system
+/dev/fastrpc-sdsp         0664   system     system
 /dev/adsprpc-smd-secure   0644   system     system
+/dev/fastrpc-adsp-secure  0644   system     system
+/dev/fastrpc-cdsp-secure  0644   system     system
+/dev/fastrpc-sdsp-secure  0644   system     system
 /dev/system_health_monitor 0644  radio      system
 /dev/mdss_rotator         0664   system     system
 /dev/spec_sync            0660   system     system
@@ -453,18 +459,36 @@ subsystem mem_buf_vm
 /sys/class/leds/red      repeat       0640    system    system
 /sys/class/leds/red      hw_pattern   0640    system    system
 /sys/class/leds/red      trigger      0640    system    system
+/sys/class/leds/red      brightness   0664    system    system
+/sys/class/leds/red      tr1          0664    system    system
+/sys/class/leds/red      tf1          0664    system    system
+/sys/class/leds/red      toff         0664    system    system
+/sys/class/leds/red      ton          0664    system    system
+/sys/class/leds/red      support      0664    system    system
 /sys/class/leds/green    delay_on     0640    system    system
 /sys/class/leds/green    delay_off    0640    system    system
 /sys/class/leds/green    breath       0640    system    system
 /sys/class/leds/green    trigger      0640    system    system
 /sys/class/leds/green    repeat       0640    system    system
 /sys/class/leds/green    hw_pattern   0640    system    system
+/sys/class/leds/green    brightness   0664    system    system
+/sys/class/leds/green    tr1          0664    system    system
+/sys/class/leds/green    tf1          0664    system    system
+/sys/class/leds/green    toff         0664    system    system
+/sys/class/leds/green    ton          0664    system    system
+/sys/class/leds/green    support      0664    system    system
 /sys/class/leds/blue     delay_on     0640    system    system
 /sys/class/leds/blue     delay_off    0640    system    system
 /sys/class/leds/blue     breath       0640    system    system
 /sys/class/leds/blue     trigger      0640    system    system
 /sys/class/leds/blue     repeat       0640    system    system
 /sys/class/leds/blue     hw_pattern   0640    system    system
+/sys/class/leds/blue     brightness   0664    system    system
+/sys/class/leds/blue     tr1          0664    system    system
+/sys/class/leds/blue     tf1          0664    system    system
+/sys/class/leds/blue     toff         0664    system    system
+/sys/class/leds/blue     ton          0664    system    system
+/sys/class/leds/blue     support      0664    system    system
 
 # NPU device
 /dev/msm_npu             0644   system     system
@@ -492,7 +516,9 @@ subsystem mem_buf_vm
 /sys/bus/usb/devices/usb*   authorized                 0660  system  usb
 
 #USB mode setting
+/sys/bus/platform/devices/a400000.ssusb    mode        0660  system  usb
 /sys/bus/platform/devices/a600000.ssusb    mode        0660  system  usb
+/sys/bus/platform/devices/4e00000.ssusb    mode        0660  system  usb
 
 #Memory Offline
 /sys/devices/system/memory/memory* state    0660 system system
